@@ -1,0 +1,72 @@
+<?php
+/**
+ * Copyright (c) 2019. All rights reserved ePay Payment Solutions.
+ *
+ * This program is free software. You are allowed to use the software but NOT allowed to modify the software.
+ * It is also not legal to do any changes to the software and distribute it in your own name / brand.
+ *
+ * All use of the payment modules happens at your own risk. We offer a free test account that you can use to test the module.
+ *
+ * @author    ePay Payment Solutions
+ * @copyright ePay Payment Solutions (https://epay.dk)
+ * @license   ePay Payment Solutions
+ */
+
+namespace Epay\Payment\Model\Method;
+
+interface IPayment
+{
+    /**
+     * Get payment window
+     *
+     * @param \Magento\Sales\Model\Order
+     * @return mixed
+     */
+    public function getPaymentWindow($order);
+
+    /**
+     * Capture payment
+     *
+     * @param \Magento\Payment\Model\InfoInterface $payment
+     * @param float $amount
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function capture(\Magento\Payment\Model\InfoInterface $payment, $amount);
+
+    /**
+     * Refund payment
+     *
+     * @param \Magento\Payment\Model\InfoInterface $payment
+     * @param float $amount
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function refund(\Magento\Payment\Model\InfoInterface $payment, $amount);
+
+    /**
+     * Void payment
+     *
+     * @param \Magento\Payment\Model\InfoInterface $payment
+     * @return $this
+     */
+    public function void(\Magento\Payment\Model\InfoInterface $payment);
+
+    /**
+     * Cancel payment
+     *
+     * @param \Magento\Payment\Model\InfoInterface $payment
+     * @return $this
+     */
+    public function cancel(\Magento\Payment\Model\InfoInterface $payment);
+
+    /**
+     * Get ePay Checkout Transaction
+     *
+     * @param mixed $transactionId
+     * @param string $storeId
+     * @param string &$message
+     * @return mixed
+     */
+    public function getTransaction($transactionId, $storeId, &$message);
+}

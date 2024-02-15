@@ -1,0 +1,38 @@
+{
+  "name": "epay/payment",
+  "description": "ePay payment module for Magento 2  ",
+  "type": "magento2-module",
+  "version": "3.0.2",
+  "authors": [
+    {
+      "name": "ePay Payment Solutions A/S",
+      "email": "support@epay.dk
+    }
+  ],
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "require": {
+    "magento/framework": "100.* | 101.* | 102.* | 103.*",
+    "magento/module-backend": "100.* | 101.* | 102.*",
+    "magento/module-catalog": "100.* | 101.* | 102.* | 103.* | 104.*",
+    "magento/module-checkout": "100.*",
+    "magento/module-config": "100.* | 101.*",
+    "magento/module-payment": "100.*",
+    "magento/module-quote": "100.* | 101.*",
+    "magento/module-sales": "100.* | 101.* | 102.* | 103.*",
+    "magento/module-store": "100.* | 101.*",
+    "magento/module-tax": "100.*",
+    "magento/module-ui": "100.* | 101.*",
+    "laminas/laminas-soap": "^2.9"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Epay\\Payment\\": ""
+    }
+  }
+}
