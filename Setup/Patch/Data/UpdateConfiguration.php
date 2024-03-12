@@ -1,14 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Epay\Payment\Setup\Patch\Data;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
-/**
- * UpdateConfiguration Data Patch Class to remove old config values
- */
 class UpdateConfiguration implements DataPatchInterface, PatchRevertableInterface
 {
     /**
@@ -33,7 +32,6 @@ class UpdateConfiguration implements DataPatchInterface, PatchRevertableInterfac
     {
         $this->updateConfiguration();
     }
-
     /**
      * Revert the data patch.
      */
@@ -41,7 +39,6 @@ class UpdateConfiguration implements DataPatchInterface, PatchRevertableInterfac
     {
         return true;
     }
-
     /**
      * Retrieve aliases for the data patch.
      *
@@ -51,17 +48,16 @@ class UpdateConfiguration implements DataPatchInterface, PatchRevertableInterfac
     {
         return [];
     }
-
     /**
      * Retrieve dependencies for the data patch.
      *
      * @return array
      */
+
     public static function getDependencies()
     {
         return [];
     }
-
     /**
      * Update the config Values in core_config_data table
      */
@@ -75,19 +71,14 @@ class UpdateConfiguration implements DataPatchInterface, PatchRevertableInterfac
         $oldConfigValues = $connection->fetchAll($select);
     
         foreach ($oldConfigValues as $oldConfig) {
-            // Skip certain paths
             if ($oldConfig['path'] === 'payment/bambora_epay/active' || $oldConfig['path'] === 'payment/bambora_epay/title') {
-                continue; // Skip this iteration
+                continue; 
             }
-    
-            // Define the new path here
-            $path = str_replace('payment/bambora_epay', 'payment/epay', $oldConfig['path']);
-    
-            // Insert the new values into the database
+            $newPath = str_replace('payment/bambora_epay', 'payment/epay', $oldConfig['path']);
             $connection->insert($configTable, [
                 'scope' => $oldConfig['scope'],
                 'scope_id' => $oldConfig['scope_id'],
-                'path' => $path, // Use the new path
+                'path' => $newPath,
                 'value' => $oldConfig['value'],
             ]);
         }
