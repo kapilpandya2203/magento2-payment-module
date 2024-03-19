@@ -39,7 +39,7 @@
         <masscaptureinvoicemail>1</masscaptureinvoicemail>
         <roundingmode>round_default</roundingmode>
         <uncancelorderlines>0</uncancelorderlines>
-        <group>epay</group>
+        <group>epay_technology</group>
       </epay>
     </payment>
   </default>
