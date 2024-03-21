@@ -65,14 +65,11 @@ class UpdateConfiguration implements DataPatchInterface, PatchRevertableInterfac
     {
         $configTable = $this->moduleDataSetup->getTable('core_config_data');
         $connection = $this->moduleDataSetup->getConnection();
-        // Build a Select query to fetch old configuration values
         $selectOldConfig = $connection->select()->from($configTable)
             ->where('path LIKE ?', '%payment/bambora_epay%');
         $oldConfigValues = $connection->fetchAll($selectOldConfig);
-        // Prepare data for insertion and update
         $dataToInsert = [];
         foreach ($oldConfigValues as $oldConfig) {
-            // Skip certain paths
             if ($oldConfig['path'] === 'payment/bambora_epay/active' || $oldConfig['path'] === 'payment/bambora_epay/title') {
                 continue;
             }
