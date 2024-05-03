@@ -15,4 +15,3 @@
 use \Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Epay_Payment', __DIR__);
-// ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Epay_Payment-module', __DIR__);

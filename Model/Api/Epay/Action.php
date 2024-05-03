@@ -91,7 +91,7 @@ class Action extends Base
     {
         $url = $this->_getEndpoint(
                 ApiEndpoints::ENDPOINT_EPAY_ASSETS
-            ) . "/worldline_icon_64x64.png";
+            ) . "/epay_icon_64x64.png";
         return $url;
     }
 

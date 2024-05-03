@@ -772,7 +772,7 @@ class PaymentInfo extends \Magento\Backend\Block\Template
      */
     public function getPaymentLogoUrl($paymentId, $name)
     {
-        return '<img class="epay_paymentcard" src="https://d3r1pwhfz7unl9.cloudfront.net/paymentlogos/' . $paymentId . '.svg" alt ="' . $name . '">';
+        return '<img class="epay_paymentcard" src="https://cdn.epay.eu/paymentlogos/external/' . $paymentId . '.svg" alt ="' . $name . '">';
     }
 
     /**

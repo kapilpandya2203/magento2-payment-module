@@ -24,7 +24,7 @@ class Base extends \Magento\Framework\DataObject
     protected $endpoints = [
         'remote' => 'https://ssl.ditonlinebetalingssystem.dk/remote',
         'integration' => 'https://ssl.ditonlinebetalingssystem.dk/integration',
-        'assets' => 'https://d3r1pwhfz7unl9.cloudfront.net'
+        'assets' => 'https://cdn.epay.eu'
     ];
 
     /**
